@@ -1,3 +1,4 @@
+import 'package:crud_firebase/pages/add_name_page.dart';
 import 'package:crud_firebase/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -20,9 +21,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Material App',
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Home(),
+        '/add': (context) => const AddNamePage(),
+      },
     );
   }
 }

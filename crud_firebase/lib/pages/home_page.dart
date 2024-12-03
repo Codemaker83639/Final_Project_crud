@@ -19,39 +19,40 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: getPeople(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          } else if (snapshot.hasData) {
-            final data = snapshot.data as List<dynamic>;
-            return ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(data[index]['name'] ?? 'Sin nombre'),
-                );
-              },
-            );
-          } else {
-            return const Center(
-              child: Text('No hay datos disponibles'),
-            );
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Agregar',
-        child: const Icon(Icons.add),
-      ),
-    );
+        body: FutureBuilder(
+          future: getPeople(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            } else if (snapshot.hasData) {
+              final data = snapshot.data as List<dynamic>;
+              return ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(data[index]['name'] ?? 'Sin nombre'),
+                  );
+                },
+              );
+            } else {
+              return const Center(
+                child: Text('No hay datos disponibles'),
+              );
+            }
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            await Navigator.pushNamed(context, '/add');
+            setState(() {});
+          },
+          child: const Icon(Icons.add),
+        ));
   }
 }
