@@ -36,7 +36,11 @@ class _HomeState extends State<Home> {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(data[index]['name'] ?? 'Sin nombre'),
+                    title: Text(snapshot.data?[index]['name']),
+                    onTap: (() {
+                      Navigator.pushNamed(context, "/edit",
+                          arguments: {"name": snapshot.data?[index]['name']});
+                    }),
                   );
                 },
               );
