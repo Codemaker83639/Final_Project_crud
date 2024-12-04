@@ -7,9 +7,12 @@ Future<List> getPeople() async {
   QuerySnapshot querySnapshot = await db.collection('people').get();
   for (var doc in querySnapshot.docs) {
     final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    final person = {'name': data['name']};
+    final person = {
+      'name': data['name'],
+      "uid": doc.id,
+    };
 
-    people.add(doc.data());
+    people.add(person);
   }
 
   return people;
