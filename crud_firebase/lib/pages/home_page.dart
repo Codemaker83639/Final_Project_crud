@@ -36,6 +36,9 @@ class _HomeState extends State<Home> {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
+                    onDismissed: (direction) async {
+                      await deletepeople(snapshot.data?[index]['uid']);
+                    },
                     confirmDismiss: (direction) async {
                       bool result = false;
 
