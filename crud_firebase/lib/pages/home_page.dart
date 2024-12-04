@@ -136,7 +136,15 @@ class _HomeState extends State<Home> {
           await Navigator.pushNamed(context, '/add');
           setState(() {});
         },
-        child: const Icon(Icons.add),
+        backgroundColor: const Color(0xFFFFF8E1), // Color crema claro
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16), // Bordes suaves
+        ),
+        child: const Icon(
+          Icons.note_add, // Icono más amigable
+          color: Colors.black, // Contraste con el fondo
+          size: 30, // Tamaño del icono
+        ),
       ),
     );
   }
