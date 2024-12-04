@@ -40,7 +40,7 @@ dependencies:
   #dependencias de firebase
   firebase_core: ^3.8.0
   cloud_firestore: ^5.5.0
-  
+  #firebase_auth: ^5.3.3
 
 
 dev_dependencies:
